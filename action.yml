@@ -1,0 +1,51 @@
+name: 'GESIS Methods Hub Quarto to Jupyter Notebook'
+description: 'Convert a Quarto document into a Jupyter Notebook for GESIS Methods Hub'
+inputs:
+  file:
+    description: 'Convert to Jupyter Notebook'
+    required: false
+    default: 'README.qmd'
+  version:
+    description: 'Version of Quarto'
+    required: false
+    default: '1.7.29'
+runs:
+  using: "composite"
+  steps:  
+    - name: Install Quarto
+      shell: bash
+      env:
+        QUARTO_VERSION: ${{ inputs.version }}
+        QUARTO_DEB: quarto-linux-amd64.deb
+      run: |
+        wget \
+        --output-file $QUARTO_DEB \
+        https://github.com/quarto-dev/quarto-cli/releases/download/v$QUARTO_VERSION/quarto-$QUARTO_VERSION-linux-amd64.deb
+        dpkg -i $QUARTO_DEB
+    - name: Fetch Git repository
+      uses: actions/checkout@v4
+    - shell: bash
+      env:
+        INPUT_FILE: ${{ inputs.file }}
+      run: |
+        quarto \
+        convert \
+        $INPUT_FILE
+    - name: Set up Git user
+      shell: bash
+      run: |
+        git config --global user.name "Methods Hub"
+        git config --global user.email "methodshub@gesis.org"
+    - name: Commit Jupyter Notebook
+      shell: bash
+      env:
+        INPUT_FILE: ${{ inputs.file }}
+      run: |
+        git add .
+        git commit -m "Record representation of $INPUT_FILE as Jupyter Notebook"
+    - name: Push Changes
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
