@@ -1,0 +1,14 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test-github-action:
+    runs-on: ubuntu-24.04
+    name: Test GitHub Action
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          file: tests/python.qmd
