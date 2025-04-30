@@ -1,0 +1,45 @@
+---
+title: Test with R code
+date: 2025-04-30
+author:
+  - name: Raniere Gaia Costa da Silva
+    id: jc
+    orcid: 0000-0002-8381-3749
+    email: Raniere.CostadaSilva@gesis.org
+    affiliation: 
+      - name: GESIS Leibniz Institute for the Social Sciences 
+        url: https://www.gesis.org/
+  - name: Chung-hong Chan
+    orcid: 0000-0002-6232-7530
+    email: Chung-hong.Chan@gesis.org
+    affiliation: 
+      - name: GESIS Leibniz Institute for the Social Sciences 
+        url: https://www.gesis.org/
+abstract: > 
+  Minimal working example of Quarto document
+  with R code to be converted into Jupyter Notebook
+  using GitHub Actions. 
+keywords:
+  - Quarto
+  - Jupyter Notebook
+  - GitHub Actions
+license: "CC0"
+# The declaration of the Jupyter Kernel is required.
+jupyter:
+    kernelspec:
+        name: "ir43"
+        language: "R"
+        display_name: "R 4.3.2"
+---
+
+Lorem ipsum
+
+```{r}
+|# eval: false
+
+install.packages("tidyverse")
+```
+
+```{r}
+1 + 1
+```

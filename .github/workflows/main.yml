@@ -11,6 +11,7 @@ jobs:
       matrix:
         test_filename:
           - python.qmd
+          - rstats.qmd
     steps:
       - uses: actions/checkout@v4
       - uses: ./
