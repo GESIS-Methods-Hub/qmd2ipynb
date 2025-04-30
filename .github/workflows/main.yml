@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'tests/*'
 jobs:
   test-github-action:
     runs-on: ubuntu-24.04
