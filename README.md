@@ -16,10 +16,12 @@ on:
       - method.qmd
       - tutorial.qmd
 jobs:
-  test-methods-hub-render:
-    name: Convert Quarto to Jupyter Notebook
-    uses: GESIS-Methods-Hub/qmd2ipynb@v2
-    with:
-      files: 'method.qmd tutorial.qmd'
-      token: ${{ secrets.GITHUB_TOKEN }}
+  convert-qmd-into-ipynb:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Convert Quarto to Jupyter Notebook
+        uses: GESIS-Methods-Hub/qmd2ipynb@v2
+        with:
+          files: 'method.qmd tutorial.qmd'
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
