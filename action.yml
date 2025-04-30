@@ -11,17 +11,11 @@ inputs:
     default: '1.7.29'
 runs:
   using: "composite"
-  steps:  
-    - name: Install Quarto
-      shell: bash
-      env:
-        QUARTO_VERSION: ${{ inputs.version }}
-        QUARTO_DEB: quarto-linux-amd64.deb
-      run: |
-        wget \
-        --output-file $QUARTO_DEB \
-        https://github.com/quarto-dev/quarto-cli/releases/download/v$QUARTO_VERSION/quarto-$QUARTO_VERSION-linux-amd64.deb
-        dpkg -i $QUARTO_DEB
+  steps:
+    - name: Install Quarto 
+      uses: quarto-dev/quarto-actions/setup@v2
+      with:
+        version: ${{ inputs.version }}
     - name: Fetch Git repository
       uses: actions/checkout@v4
     - shell: bash
