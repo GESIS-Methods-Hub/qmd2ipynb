@@ -25,7 +25,7 @@ runs:
       env:
         INPUT_FILES: ${{ inputs.files }}
       run: |
-        for file in $INPUT_FILE
+        for file in $INPUT_FILES
         do
           quarto \
           convert \
