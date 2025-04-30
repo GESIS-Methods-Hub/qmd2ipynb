@@ -5,8 +5,11 @@ on:
       - main
 jobs:
   test-github-action:
+    runs-on: ubuntu-24.04
     name: Test GitHub Action
-    secrets: inherit
-    uses: ${{ github.repository }}/action.yml@${{ github.ref }}
-    with:
-      file: tests/python.qmd
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          file: tests/python.qmd
+          token: ${{ secrets.GITHUB_TOKEN }}

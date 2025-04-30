@@ -9,6 +9,9 @@ inputs:
     description: 'Version of Quarto'
     required: false
     default: '1.7.29'
+  token:
+    description: 'GitHub token with write access to the repository'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -40,4 +43,4 @@ runs:
     - name: Push Changes
       shell: bash
       run: |
-        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+        git push https://${{ inputs.token }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
