@@ -13,12 +13,13 @@ on:
     branches:
       - main
     paths:
-      - README.qmd
+      - method.qmd
+      - tutorial.qmd
 jobs:
   test-methods-hub-render:
     name: Convert Quarto to Jupyter Notebook
-    uses: GESIS-Methods-Hub/qmd2ipynb@v1
+    uses: GESIS-Methods-Hub/qmd2ipynb@v2
     with:
-      file: README.qmd
+      files: 'method.qmd tutorial.qmd'
       token: ${{ secrets.GITHUB_TOKEN }}
 ```
