@@ -7,8 +7,7 @@ jobs:
   test-github-action:
     runs-on: ubuntu-24.04
     name: Test GitHub Action
-    secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    secrets: inherit
     steps:
       - uses: actions/checkout@v4
       - uses: ./
