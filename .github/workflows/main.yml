@@ -7,9 +7,13 @@ jobs:
   test-github-action:
     runs-on: ubuntu-24.04
     name: Test GitHub Action
+    strategy:
+      matrix:
+        test_filename:
+          - python.qmd
     steps:
       - uses: actions/checkout@v4
       - uses: ./
         with:
-          file: tests/python.qmd
+          file: tests/${{ matrix.test_filename }}
           token: ${{ secrets.GITHUB_TOKEN }}
