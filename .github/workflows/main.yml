@@ -7,6 +7,6 @@ jobs:
   test-github-action:
     name: Test GitHub Action
     secrets: inherit
-    uses: ./
+    uses: ./action.yml
     with:
       file: tests/python.qmd
