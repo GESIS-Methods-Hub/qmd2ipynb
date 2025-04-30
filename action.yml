@@ -1,8 +1,8 @@
 name: 'GESIS Methods Hub Quarto to Jupyter Notebook'
 description: 'Convert a Quarto document into a Jupyter Notebook for GESIS Methods Hub'
 inputs:
-  file:
-    description: 'Convert to Jupyter Notebook'
+  files:
+    description: 'Space separated list of Quarto files to convert into Jupyter Notebook'
     required: false
     default: 'README.qmd'
   version:
@@ -23,11 +23,14 @@ runs:
       uses: actions/checkout@v4
     - shell: bash
       env:
-        INPUT_FILE: ${{ inputs.file }}
+        INPUT_FILES: ${{ inputs.files }}
       run: |
-        quarto \
-        convert \
-        $INPUT_FILE
+        for file in $INPUT_FILE
+        do
+          quarto \
+          convert \
+          $file
+        done
     - name: Set up Git user
       shell: bash
       run: |
