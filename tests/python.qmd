@@ -1,8 +1,37 @@
 ---
-title: Test
+title: Test with Python code
+date: 2025-04-30
+author:
+  - name: Raniere Gaia Costa da Silva
+    orcid: 0000-0002-8381-3749
+    email: Raniere.CostadaSilva@gesis.org
+    affiliation: 
+      - name: GESIS Leibniz Institute for the Social Sciences 
+        url: https://www.gesis.org/
+  - name: Chung-hong Chan
+    orcid: 0000-0002-6232-7530
+    email: Chung-hong.Chan@gesis.org
+    affiliation: 
+      - name: GESIS Leibniz Institute for the Social Sciences 
+        url: https://www.gesis.org/
+abstract: > 
+  Minimal working example of Quarto document
+  with Python code to be converted into Jupyter Notebook
+  using GitHub Actions. 
+keywords:
+  - Quarto
+  - Jupyter Notebook
+  - GitHub Actions
+license: "CC0"
 ---
 
 Lorem ipsum
+
+```{python}
+|# eval: false
+
+%pip install matplotlib
+```
 
 ```{python}
 1 + 1
